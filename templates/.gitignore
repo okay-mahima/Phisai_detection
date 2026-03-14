@@ -1,0 +1,21 @@
+# Python Virtual Environment
+venv/
+
+# Environment variables
+.env
+
+# Large Model weights and serialized objects
+*.pth
+*.pkl
+
+# Byte-compiled code and Python cache
+__pycache__/
+*.pyc
+
+# IDE/Editor settings
+.vscode/
+.idea/
+
+# Operating System files
+.DS_Store
+Thumbs.db

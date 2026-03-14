@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhiShAI | AI Phishing Detection</title>
+  <style>
+    /* Styling for Professional Dark Theme */
+    *{box-sizing:border-box;font-family:'Segoe UI',Tahoma,sans-serif; scroll-behavior: smooth;}
+    body{ margin:0; min-height:100vh; background:linear-gradient(135deg,#0b1d26,#102a33,#1c3d4a); color:#fff; }
+    .navbar{ position:fixed; top:0; width:100%; display:flex; justify-content:space-between; align-items:center; padding:16px 50px; background:rgba(10,25,32,0.9); backdrop-filter:blur(10px); z-index:1000; }
+    .logo{ font-size:1.4rem; font-weight:700; color:#00d4ff; text-decoration:none;}
+    .navbar a{ color:#fff; text-decoration:none; margin-left:30px; font-weight:600; }
+    .container{ max-width:1000px; margin:140px auto 60px; padding:0 25px; }
+    h1{ text-align:center; margin-bottom:20px; color: #fff; }
+    .intro{ text-align:center; max-width:800px; margin:0 auto 40px; line-height:1.7; opacity:0.9; }
+    
+    /* 4 CARDS SECTION */
+    .cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:25px; margin-bottom: 50px;}
+    .card{ background:rgba(255,255,255,0.08); padding:22px; border-radius:16px; border: 1px solid rgba(0, 212, 255, 0.1); }
+    .card h3{ margin-top:0; color:#00d4ff; font-size:1.1rem; }
+
+    /* BUTTON TO SHOW FORM */
+    .link-box{ text-align:center; margin-bottom:50px; }
+    .link-box button{ padding:15px 35px; border-radius:30px; background:linear-gradient(135deg,#00d4ff,#0072ff); color:#fff; border:none; font-weight:600; cursor:pointer; font-size: 1rem; box-shadow: 0 10px 20px rgba(0, 212, 255, 0.3);}
+
+    /* HIDDEN DETECTOR FORM (Aapka Purana Form) */
+    #detector-ui { 
+        display: none; background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 20px; 
+        border: 1px solid rgba(0, 212, 255, 0.2); margin-top: 40px; animation: fadeIn 0.6s ease;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    label { display: block; margin-bottom: 12px; font-weight: bold; color: #00d4ff; }
+    textarea { width: 100%; min-height: 180px; border-radius: 12px; padding: 15px; font-size: 1rem; color: #333; border:none; margin-bottom: 25px;}
+    .actions { display: flex; gap: 15px; }
+    .check { flex: 2; padding: 16px; background: #00d4ff; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; color: #0b1d26; font-size: 1rem;}
+    .reset { flex: 1; padding: 16px; background: #3d4a52; border: none; border-radius: 10px; color: white; cursor: pointer; font-size: 1rem; }
+    .error-msg { color: #ff6b6b; text-align: center; margin-top: 20px; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<div class="navbar">
+  <a href="/" class="logo">PhiShAI</a>
+  <div><a href="/">Home</a><a href="/about">About</a></div>
+</div>
+
+<div class="container">
+  <h1>PhiShAI: AI-Phishing Detection</h1>
+  <p class="intro">Analyze a message using BERT-based language understanding and multi-dimensional detection modules to identify phishing attempts.</p>
+
+  <div class="link-box">
+    <button onclick="toggleDetector()">Detection Mechanism</button>
+  </div>
+
+  <div class="cards">
+    <div class="card"><h3>URL Analysis</h3><p>Detects suspicious domains, redirects and abnormal URL patterns.</p></div>
+    <div class="card"><h3>Webpage Analysis</h3><p>Identifies phishing-related webpage structures and signals.</p></div>
+    <div class="card"><h3>Email Analysis</h3><p>Understands message intent using deep contextual language.</p></div>
+    <div class="card"><h3>Psychological Analysis</h3><p>Detects urgency, fear and social engineering tactics.</p></div>
+  </div>
+
+  <div id="detector-ui">
+    <h2 style="color: #fff;">Analyze Message</h2>
+    <p style="opacity:0.8; margin-bottom:20px;">Paste the content you want to analyze below.</p>
+    
+    <form method="POST" action="/">
+      <label for="text">Input Message </label>
+      <textarea name="text" id="text" placeholder="Paste the content here..." required></textarea>
+
+      <div class="actions">
+        <button type="submit" class="check">Run PhiShAI Detection</button>
+        <button type="reset" class="reset">Clear</button>
+      </div>
+    </form>
+    {% if error %}<div class="error-msg">{{ error }}</div>{% endif %}
+  </div>
+</div>
+
+<script>
+  function toggleDetector() {
+    var ui = document.getElementById('detector-ui');
+    ui.style.display = 'block';
+    window.scrollTo({ top: ui.offsetTop - 120, behavior: 'smooth' });
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  </head>
+<body>
+  <div class="container">
+    <div class="nav">
+      <a href="/">Home</a>
+      <a href="/about">About PhiShAI</a>
+    </div>
+
+    <h1>PhiShAI: AI-Phishing Detection</h1>
+    <p class="subtitle">
+      Analyze a message using BERT-based language understanding and multi-dimensional detection modules 
+      to identify phishing and AI-generated phishing attempts.
+    </p>
+
+    <form method="POST" action="/">
+      <label for="text">Input Message </label>
+      <textarea name="text" id="text" placeholder="Paste the content you want to analyze..."></textarea>
+
+      <div class="actions">
+        <button type="submit" class="check">Run PhiShAI Detection</button>
+        <button type="reset" class="reset">Clear</button>
+      </div>
+    </form>
+
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <div class="note">
+      This demo implements the proposed PhiShAI hybrid framework.
+    </div>
+  </div>
+</body>
+</html>
